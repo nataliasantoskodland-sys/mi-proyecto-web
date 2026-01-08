@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi sitio web profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <style>
+
+        /* 1. Reseteo Universal: Aplica el modelo de caja moderno */ 
+        /* Usa el selector universal (*) y los pseudoelementos (::before, ::after) */ 
+        *, 
+        *::before, *::after  { 
+            box-sizing: border-box; /* ¡La clave de la Clase 2! */ margin: 0; 
+            padding: 0; 
+        } 
+
+        /* NUEVA SECCIÓN: Definición de Variables Globales */ 
+        :root { 
+            /* Paleta de Colores del Diseño */ --color-fondo-principal: #1a202c; /* Gris oscuro / Fondo */ --color-texto-claro:  #edf2f7; --color-primario-azul:  #3182ce; 
+            /* Texto principal */ 
+            /* Azul para botones y acentos */ --color-secundario-hover: #58a6ff; /* Azul para efecto hover */ 
+            /* Tipografías */ --font-body: "Inter", sans-serif; --font-heading: 'Playfair Display', serif; /* O la que haya elegido */ 
+        } 
+            /* 2. Estilos Globales: Aplicar Variables */ body { 
+            font-family: var(--font-body); /* Usar variable para el cuerpo */ 
+            background-color: var(--color-fondo-principal); 
+            color: var(--color-texto-claro); 
+        }
+
+        /* 3. Estilos Específicos para Títulos (H1, H2) */ h1, h2, h3 { 
+            font-family: var(--font-heading); /* Aplicar la nueva fuente a los títulos */ 
+        } 
+        /* 4. Estilos de Botón: Aplicar Variables */ 
+            .btn-primary { 
+            background-color: var(--color-primario-azul); /* Aplicar azul primario */ transition: 
+            background-color 0.3s ease; 
+        } 
+            .btn-primary:hover { 
+            background-color: var(--color-secundario-hover); /* Aplicar hover */ 
+        } 
+
+         
+
+        .hero-content  h1::after  { 
+            content: " "; /* Obligatorio, incluso vacío */ 
+            display: block; /* Convertir la línea en un bloque para darle ancho */ 
+            width: 100px; 
+            height: 4px; 
+            background-color: #3182ce; /* Color azul primario */ 
+            margin: 10px auto 0 auto; /* Centrar la línea debajo del título */ border-radius: 2px; 
+        }
+
+        /* 2. Estilos Globales (tomados de la Clase 1 y ajustados) */ 
+        body { 
+            font-family:  var(--font-body); 
+            background-color: var(--color-fondo-principal); color: 
+            var(--color-texto-claro); 
+        } 
+        .dropdown:hover .dropdown-menu { display: block; opacity: 1; transform: translateY(0); } 
+        .dropdown-menu {  
+            display: none;  
+            opacity: 0;  
+            transform: translateY(10px);  
+            transition: all 0.3s ease;  
+        } 
+        .glass-card { 
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        } 
+        header, footer { 
+            width: 100%; 
+        } 
+        /* 3. Estilos Específicos para el Botón (Uso de Pseudoclase :hover) */ 
+        .btn-primary { 
+            transition: background-color 0.3s ease; 
+        } 
+        .btn-primary:hover { 
+            background-color: #58a6ff; 
+        } 
+        /* 4. Ejemplo de Pseudoelemento: Línea decorativa debajo del H1 */ 
+        .hero-content  h1::after  { 
+            content: ""; /* Obligatorio: la línea no tiene texto, pero debe existir */ display: block; 
+            width: 100px; 
+            height: 4px; 
+            background-color:  #3182ce; 
+            margin: 10px auto 0 auto; /* 10px de margen superior, centrado horizontalmente */ border-radius: 2px; 
+        } 
+        /* 5. Estilos de Paginación */ 
+        .hero-pagination span { 
+            display: inline-block; 
+            width: 10px; 
+            height: 10px; 
+            background-color:  #555; 
+            border-radius:  50%; 
+            margin: 0 4px; cursor: 
+            pointer; 
+        } 
+        .hero-pagination span:first-child { 
+            background-color: #c9d1d9; 
+        } 
+
+        /* 6. Media Query NATIVA: Ajustes para Móviles Pequeños */ 
+        /* Se aplica cuando el ancho máximo de la pantalla es 640px (breakpoint 'sm' de Tailwind) */ 
+        @media screen and (max-width: 640px) { 
+            /* Ajuste el tamaño del texto del logo en pantallas muy pequeñas */ 
+            .logo { 
+                font-size: 1.1rem !important; /* El !important es para forzar la sobrescritura */ letter-spacing: normal !important; 
+            } 
+ 
+            /* Ocultar el ícono de búsqueda completamente en móviles pequeños si es necesario */ 
+            .search-icon { display: none; 
+            } 
+        }
+        
+        
+    
+        /* Animación para la llave cuando abre */
+        /* Botón de imagen para móvil */
+        #menu-btn-img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            border: 2px solid rgba(49, 130, 206, 0.5);
+        }
+        #menu-btn-img:active {
+            transform: scale(0.9);
+            filter: brightness(1.2);
+        }
+
+        .hero-content h1::after { 
+            content: ""; display: block; width: 100px; height: 4px; 
+            background-color: #3182ce; margin: 10px auto 0 auto; border-radius: 2px; 
+        }
+        
+        
+    
+
+
+    </style>
+    </head>
+    <body class="antialiased">
+        <header class="bg-gray-900 shadow-lg sticky top-0 z-10">
+            <div class="header-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16"> 
+                <div class="logo text-xl font-bold text-white tracking-wider">
+                    <span class="text-blue-500">PROYECTO</span> WEB 
+                </div>
+                <nav class="main-nav hidden md:block">
+                    <!-- Navegación Principal sticky --> 
+                    <nav class="sticky main-nav hidden md:block"> 
+                        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"> 
+ 
+                        <!-- (puede ir logo aquí si quieres) --> 
+ 
+                        <!-- CONTENEDOR DE LOS LINKS --> 
+                        <div class="flex items-center gap-8"> 
+       
+                            <!-- Inicio --> 
+                            <div class="relative dropdown group py-4"> 
+                                <a href="about.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1"> 
+                                    Home 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> 
+                                    </svg> 
+                                </a> 
+                                <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2"> 
+                                    <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Misión - Visión</a></li> 
+                                    <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Nuestro Equipo</a></li> 
+                                </ul> 
+                            </div> 
+ 
+                            <!-- About --> 
+                            <div class="relative dropdown group py-4"> 
+                                <a href="about.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1"> 
+                                    About 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> 
+                                    </svg> 
+                                </a> 
+                                <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2"> 
+                                    <li><a href="index.html" class="block px-4 py-2 hover:bg-slate-700 transition">Recursos</a></li> 
+                                    <li><a href="index.html" class="block px-4 py-2 hover:bg-slate-700 transition">Blog</a></li> 
+                                </ul> 
+                            </div> 
+ 
+                            <!-- Services --> 
+                            <a href="index.html#services" class="text-gray-300 hover:text-blue-400 transition duration-150 p-2 rounded-lg">Services</a> 
+ 
+                            <!-- Contact --> 
+ 
+                            <a href="index.html#contact" class="text-gray-300 hover:text-blue-400 transition duration-150 p-2 rounded-lg">Contact</a> 
+ 
+                          </div>                
+                        </div>     
+                    </nav> 
+                </nav>
+                <div class="flex items-center bg-slate-800/50 border border-slate-700 rounded-full px-4 py-2"> 
+                    <input type="text" id="searchInput" placeholder="Buscar servicios..." class="bg-transparent border-none outline-none text-sm w-32 lg:w-48 text-white placeholder-slate-500"> 
+                    <button onclick="filterServices()" class="text-slate-400 hover:text-blue-400"> 
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg> 
+                    </button> 
+                </div> 
+
+                   
+                    <!-- Imagen para activar menú en Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="menu-toggle" class="focus:outline-none">
+                        <img id="menu-btn-img" src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?q=80&w=100&auto=format&fit=crop" alt="Menú" onerror="this.src='https://via.placeholder.com/45?text=M'">
+                    </button>
+                </div>
+
+
+            </div>
+
+            
+
+
+            <!-- Menú Móvil Desplegable -->
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 overflow-hidden transition-all duration-300">
+                <div class="px-6 py-8 space-y-4">
+                    <a href="#" class="block text-2xl font-bold text-white border-b border-slate-800 pb-2">Home</a>
+                    <div class="pl-4 space-y-3 border-l-2 border-blue-500 my-2">
+
+                        <!-- Inicio --> 
+                                <div class="relative dropdown group py-4"> 
+                                    <a href="about.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1"> 
+                                        Home 
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> 
+                                        </svg> 
+                                    </a> 
+                                    <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2"> 
+                                        <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Misión - Visión</a></li> 
+                                        <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Nuestro Equipo</a></li> 
+                                    </ul> 
+                                </div> 
+    
+                                <!-- About --> 
+                                <div class="relative dropdown group py-4"> 
+                                    <a href="about.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1"> 
+                                        About 
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> 
+                                        </svg> 
+                                    </a> 
+                                    <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2"> 
+                                        <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Recursos</a></li> 
+                                        <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Blog</a></li> 
+                                    </ul> 
+                                </div>
+                        <!--<a href="#" class="block text-slate-400 hover:text-white transition">Misión - Visión</a>
+                        <a href="#" class="block text-slate-400 hover:text-white transition">Equipo</a>-->
+                    </div>
+                    <a href="#services" class="block text-2xl font-bold text-white border-b border-slate-800 pb-2">Servicios</a>
+                    <a href="#contacto" class="block text-2xl font-bold text-white border-b border-slate-800 pb-2">Contacto</a>
+                </div>
+            </div>
+
+
+       
+
+
+
+
+            
+
+
+
+
+
+
+
+        </header>
+        <main>
+        <!-- Sección Historia --> 
+        <section id="historia" class="py-20 px-6 max-w-7xl mx-auto"> 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"> 
+                <div class="relative"> 
+                    <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-slate-700"> 
+                        <img 
+src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1471&auto=format&fit=crop" 
+alt="Equipo colaborando" class="w-full h-full object-cover"> 
+                    </div> 
+                    <!-- Decoración --> 
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div> 
+                </div> 
+                <div> 
+                    <h2 class="text-3xl font-bold mb-6">Nuestra Historia</h2> 
+                    <p class="text-slate-400 mb-6 leading-relaxed"> 
+                        Fundada en 2018, lo que comenzó como un pequeño estudio de dos personas en un garage se ha convertido 
+en una agencia boutique líder, reconocida por su excelencia técnica y creativa. 
+                    </p> 
+                    <p class="text-slate-400 mb-8 leading-relaxed"> 
+                        Nuestra filosofía se basa en la transparencia y la agilidad. No solo entregamos código; construimos 
+asociaciones estratégicas que permiten a nuestros clientes escalar con confianza. 
+                    </p> 
+                    <div class="grid grid-cols-2 gap-6"> 
+                        <div class="glass-card p-4 rounded-2xl"> 
+                            <p class="text-3xl font-extrabold text-blue-400">200+</p> 
+                            <p class="text-xs text-slate-500 uppercase font-bold">Proyectos Éxito</p> 
+                        </div> 
+                        <div class="glass-card p-4 rounded-2xl"> 
+                            <p class="text-3xl font-extrabold text-emerald-400">15+</p> 
+                            <p class="text-xs text-slate-500 uppercase font-bold">Países Alcanzados</p> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        </section> 
+ 
+        <!-- Sección Equipo --> 
+        <section id="equipo" class="py-24 bg-slate-900/40 px-6"> 
+            <div class="max-w-7xl mx-auto text-center"> 
+                <h2 class="text-4xl font-bold mb-16">Las Mentes Brillantes Detrás</h2> 
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"> 
+                     
+ 
+                    <!-- Miembro 1 --> 
+                    <div class="group"> 
+                        <div class="glass-card p-8 rounded-[2rem] transition-all hover:-translate-y-2 hover:border-blue-500/50"> 
+                            <div class="w-32 h-32 mx-auto mb-6 relative"> 
+                                <img 
+src="https://ui-avatars.com/api/?name=Natalia+Santos&background=0284c7&color=fff&size=200" alt="CEO" 
+class="rounded-2xl shadow-lg"> 
+                                <div class="absolute inset-0 rounded-2xl border-2 border-blue-500/30 group-hover:scale-110 
+transition duration-300"></div> 
+                            </div> 
+                            <h3 class="text-2xl font-bold">Natalia Santos</h3> 
+                            <p class="text-blue-400 font-semibold text-sm mb-4">Founder & Lead Architect</p> 
+                            <p class="text-slate-400 text-sm leading-relaxed">Estratega con más de 10 años de experiencia en 
+sistemas distribuidos y diseño de productos.</p> 
+                        </div> 
+                    </div> 
+ 
+                    <!-- Miembro 2 --> 
+                    <div class="group"> 
+                        <div class="glass-card p-8 rounded-[2rem] transition-all hover:-translate-y-2 
+hover:border-emerald-500/50"> 
+                            <div class="w-32 h-32 mx-auto mb-6 relative"> 
+                                <img 
+src="https://ui-avatars.com/api/?name=Carlos+Vargas&background=059669&color=fff&size=200" alt="CTO" 
+class="rounded-2xl shadow-lg"> 
+                                <div class="absolute inset-0 rounded-2xl border-2 border-emerald-500/30 group-hover:scale-110 
+transition duration-300"></div> 
+                            </div> 
+                            <h3 class="text-2xl font-bold">Carlos Vargas</h3> 
+                            <p class="text-emerald-400 font-semibold text-sm mb-4">Senior Developer</p> 
+                            <p class="text-slate-400 text-sm leading-relaxed">Especialista en Backend y seguridad. Obsesionado con 
+el rendimiento y la optimización de datos.</p> 
+                        </div> 
+                    </div> 
+ 
+                    <!-- Miembro 3 --> 
+                    <div class="group"> 
+                        <div class="glass-card p-8 rounded-[2rem] transition-all hover:-translate-y-2 
+hover:border-purple-500/50"> 
+                            <div class="w-32 h-32 mx-auto mb-6 relative"> 
+                                <img src="https://ui-avatars.com/api/?name=Sofia+Perez&background=7c3aed&color=fff&size=200" 
+alt="Designer" class="rounded-2xl shadow-lg"> 
+                                <div class="absolute inset-0 rounded-2xl border-2 border-purple-500/30 group-hover:scale-110 
+transition duration-300"></div> 
+                            </div> 
+                            <h3 class="text-2xl font-bold">Sofía Pérez</h3> 
+                            <p class="text-purple-400 font-semibold text-sm mb-4">Creative Director</p> 
+                            <p class="text-slate-400 text-sm leading-relaxed">Diseñadora UX/UI premiada. Su misión es hacer que la 
+tecnología sea hermosa y fácil de usar.</p> 
+                        </div> 
+                    </div> 
+ 
+                </div> 
+            </div> 
+        </section> 
+ 
+        <!-- CTA Final --> 
+        <section class="py-20 px-6"> 
+ 
+            <div class="max-w-4xl mx-auto glass-card p-12 rounded-[3rem] text-center border-blue-500/20"> 
+                <h2 class="text-3xl font-bold mb-6">¿Listo para empezar tu proyecto?</h2> 
+                <p class="text-slate-400 mb-8">Nuestro equipo está listo para convertir tu visión en una ventaja competitiva 
+real.</p> 
+                <a href="index.html#contacto" class="inline-block px-10 py-4 bg-white text-slate-900 font-extrabold 
+rounded-2xl hover:bg-blue-400 hover:text-white transition-all shadow-xl shadow-white/5"> 
+                    Hablemos hoy 
+                </a> 
+            </div> 
+        </section>
+            
+        </main>
+        <footer id="contact"  class="bg-gray-900 py-10 text-center text-gray-400 text-sm border-t border-gray- 700 mt-12">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
+                <!-- Contenedor Flex para la distribución de elementos del footer --> 
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"> 
+                    <!-- Columna de Derechos de Autor --> 
+                    <p>&copy; 2025 <span class="text-blue-400">Natalia Santos</span> WEB. Todos los derechos 
+ 
+                    <!-- Columna de Enlaces Rápidos (Flexbox para la fila) --> 
+                    <nav class="footer-nav"> 
+                        <ul  class="flex  space-x-4  text-sm  font-medium"> 
+                            <li><a href="#privacy" class="hover:text-white transition duration-150">Política de Privacidad</a></li> 
+                            <li><a href="#terms" class="hover:text-white transition duration- 150">Términos de Uso</a></li> 
+                            <li><a href="#sitemap" class="hover:text-white transition duration- 150">Mapa del Sitio</a></li> 
+                        </ul> 
+                    </nav> 
+                </div> 
+            </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

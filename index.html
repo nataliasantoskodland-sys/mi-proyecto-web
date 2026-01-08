@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi sitio web profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">
+    <style>
+
+        /* 1. Reseteo Universal: Aplica el modelo de caja moderno */ 
+        /* Usa el selector universal (*) y los pseudoelementos (::before, ::after) */ 
+        *, 
+        *::before, *::after  { 
+            box-sizing: border-box; /* ¡La clave de la Clase 2! */ margin: 0; 
+            padding: 0; 
+        } 
+
+        /* NUEVA SECCIÓN: Definición de Variables Globales */ 
+        :root { 
+            /* Paleta de Colores del Diseño */ --color-fondo-principal: #1a202c; /* Gris oscuro / Fondo */ --color-texto-claro:  #edf2f7; --color-primario-azul:  #3182ce; 
+            /* Texto principal */ 
+            /* Azul para botones y acentos */ --color-secundario-hover: #58a6ff; /* Azul para efecto hover */ 
+            /* Tipografías */ --font-body: "Inter", sans-serif; --font-heading: 'Playfair Display', serif; /* O la que haya elegido */ 
+        } 
+            /* 2. Estilos Globales: Aplicar Variables */ body { 
+            font-family: var(--font-body); /* Usar variable para el cuerpo */ 
+            background-color: var(--color-fondo-principal); 
+            color: var(--color-texto-claro); 
+        }
+
+        /* 3. Estilos Específicos para Títulos (H1, H2) */ h1, h2, h3 { 
+            font-family: var(--font-heading); /* Aplicar la nueva fuente a los títulos */ 
+        } 
+        /* 4. Estilos de Botón: Aplicar Variables */ 
+            .btn-primary { 
+            background-color: var(--color-primario-azul); /* Aplicar azul primario */ transition: 
+            background-color 0.3s ease; 
+        } 
+            .btn-primary:hover { 
+            background-color: var(--color-secundario-hover); /* Aplicar hover */ 
+        } 
+
+         
+
+        .hero-content  h1::after  { 
+            content: " "; /* Obligatorio, incluso vacío */ 
+            display: block; /* Convertir la línea en un bloque para darle ancho */ 
+            width: 100px; 
+            height: 4px; 
+            background-color: #3182ce; /* Color azul primario */ 
+            margin: 10px auto 0 auto; /* Centrar la línea debajo del título */ border-radius: 2px; 
+        }
+
+        /* 2. Estilos Globales (tomados de la Clase 1 y ajustados) */ 
+        body { 
+            font-family:  var(--font-body); 
+            background-color: var(--color-fondo-principal); color: 
+            var(--color-texto-claro); 
+        } 
+        .dropdown:hover .dropdown-menu { display: block; opacity: 1; transform: translateY(0); } 
+        .dropdown-menu {  
+            /*display: none;*/
+            display: block;  
+            opacity: 0;  
+            transform: translateY(10px);  
+            transition: all 0.3s ease;  
+        } 
+        .glass-card { 
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        } 
+        header, footer { 
+            width: 100%; 
+        } 
+        /* 3. Estilos Específicos para el Botón (Uso de Pseudoclase :hover) */ 
+        .btn-primary { 
+            transition: background-color 0.3s ease; 
+        } 
+        .btn-primary:hover { 
+            background-color: #58a6ff; 
+        } 
+        /* 4. Ejemplo de Pseudoelemento: Línea decorativa debajo del H1 */ 
+        .hero-content  h1::after  { 
+            content: ""; /* Obligatorio: la línea no tiene texto, pero debe existir */ display: block; 
+            width: 100px; 
+            height: 4px; 
+            background-color:  #3182ce; 
+            margin: 10px auto 0 auto; /* 10px de margen superior, centrado horizontalmente */ border-radius: 2px; 
+        } 
+        /* 5. Estilos de Paginación */ 
+        .hero-pagination span { 
+            display: inline-block; 
+            width: 10px; 
+            height: 10px; 
+            background-color:  #555; 
+            border-radius:  50%; 
+            margin: 0 4px; cursor: 
+            pointer; 
+        } 
+        .hero-pagination span:first-child { 
+            background-color: #c9d1d9; 
+        } 
+
+        /* 6. Media Query NATIVA: Ajustes para Móviles Pequeños */ 
+        /* Se aplica cuando el ancho máximo de la pantalla es 640px (breakpoint 'sm' de Tailwind) */ 
+        @media screen and (max-width: 640px) { 
+            /* Ajuste el tamaño del texto del logo en pantallas muy pequeñas */ 
+            .logo { 
+                font-size: 1.1rem !important; /* El !important es para forzar la sobrescritura */ letter-spacing: normal !important; 
+            } 
+ 
+            /* Ocultar el ícono de búsqueda completamente en móviles pequeños si es necesario */ 
+            .search-icon { display: none; 
+            } 
+        }
+
+         /* Animación para la llave cuando abre */ 
+        /* Botón de imagen para móvil */ 
+        #menu-btn-img { 
+            width: 45px; 
+            height: 45px; 
+            object-fit: cover; 
+            border-radius: 8px; 
+            transition: transform 0.3s ease, filter 0.3s ease; 
+            border: 2px solid rgba(49, 130, 206, 0.5); 
+        } 
+        #menu-btn-img:active { 
+            transform: scale(0.9); 
+            filter: brightness(1.2); 
+        } 
+ 
+        .hero-content h1::after {  
+            content: ""; display: block; width: 100px; height: 4px;  
+            background-color: #3182ce; margin: 10px auto 0 auto; border-radius: 2px;  
+        } 
+
+
+
+
+        
+        
+    
+
+    
+
+
+    </style>
+    </head>
+    <body class="antialiased">
+        <header class="bg-gray-900 shadow-lg sticky top-0 z-10">
+            <div class="header-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16"> 
+                <div class="logo text-xl font-bold text-white tracking-wider">
+                    <span class="text-blue-500">PROYECTO</span> WEB 
+                </div>
+                <nav class="main-nav hidden md:block">
+                    <!-- Navegación Principal sticky --> 
+                    <nav class="sticky main-nav hidden md:block"> 
+                        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between"> 
+ 
+                        <!-- (puede ir logo aquí si quieres) --> 
+ 
+                        <!-- CONTENEDOR DE LOS LINKS --> 
+                        <div class="flex items-center gap-8"> 
+       
+                            <!-- Inicio --> 
+                            <div class="relative dropdown group py-4"> 
+                                <a href="about.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1"> 
+                                    Home 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> 
+                                    </svg> 
+                                </a> 
+                                <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2"> 
+                                    <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Misión - Visión</a></li> 
+                                    <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Nuestro Equipo</a></li> 
+                                </ul> 
+                            </div> 
+ 
+                            <!-- About --> 
+                            <div class="relative dropdown group py-4"> 
+                                <a href="about.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1"> 
+                                    About 
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"> 
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> 
+                                    </svg> 
+                                </a> 
+                                <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2"> 
+                                    <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Recursos</a></li> 
+                                    <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Blog</a></li> 
+                                </ul> 
+                            </div> 
+ 
+                            <!-- Services --> 
+                            <a href="#services" class="text-gray-300 hover:text-blue-400 transition duration-150 p-2 rounded-lg">Services</a> 
+ 
+                            <!-- Contact --> 
+ 
+                            <a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-150 p-2 rounded-lg">Contact</a> 
+ 
+                          </div>                
+                        </div>     
+                    </nav> 
+                </nav>
+                <div class="flex items-center bg-slate-800/50 border border-slate-700 rounded-full px-4 py-2"> 
+                    <input type="text" id="searchInput" placeholder="Buscar servicios..." class="bg-transparent border-none outline-none text-sm w-32 lg:w-48 text-white placeholder-slate-500"> 
+                    <button onclick="filterServices()" class="text-slate-400 hover:text-blue-400"> 
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg> 
+                    </button> 
+                </div> 
+
+                <!-- Imagen para activar menú en Móvil --> 
+                <div class="md:hidden flex items-center"> 
+                    <button id="menu-toggle" class="focus:outline-none"> 
+                        <img id="menu-btn-img" src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?q=80&w=100&auto=format&fit=crop" alt="Menú" onerror="this.src='https://via.placeholder.com/45?text=M'"> 
+                    </button> 
+                </div> 
+
+
+
+
+            </div>
+
+
+                <!-- Menú Móvil Desplegable --> 
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 overflow-hidden transition-all duration-300"> 
+                <div class="px-6 py-8 space-y-4"> 
+                    <a href="#" class="block text-2xl font-bold text-white border-b border-slate-800 pb-2">Home</a> 
+                    <div class="pl-4 space-y-3 border-l-2 border-blue-500 my-2"> 
+ 
+                        <!-- Inicio -->  
+                                <div class="relative dropdown group py-4">  
+                                    <a href="about.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1">  
+                                        Home  
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">  
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>  
+                                        </svg>  
+                                    </a>  
+                                    <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2">  
+                                        <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Misión - Visión</a></li>  
+                                        <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Nuestro Equipo</a></li>  
+                                    </ul>  
+                                </div>  
+     
+                                <!-- About -->  
+                                <div class="relative dropdown group py-4">  
+                                    <a href="about.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1">  
+                                        About  
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">  
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>  
+ 
+                                        </svg>  
+                                    </a>  
+                                    <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2">  
+                                        <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Recursos</a></li>  
+                                        <li><a href="about.html" class="block px-4 py-2 hover:bg-slate-700 transition">Blog</a></li>  
+                                    </ul>  
+                                </div> 
+                        <!--<a href="#" class="block text-slate-400 hover:text-white transition">Misión - Visión</a> 
+                        <a href="#" class="block text-slate-400 hover:text-white transition">Equipo</a>--> 
+                    </div> 
+                    <a href="#services" class="block text-2xl font-bold text-white border-b border-slate-800 pb-2">Servicios</a> 
+                    <a href="#contacto" class="block text-2xl font-bold text-white border-b border-slate-800 pb-2">Contacto</a> 
+                </div> 
+            </div>
+
+            
+
+
+
+        </header>
+        <main class="w-full">
+            <section class="hero-section bg-gray-800 flex flex-col items-center justify-center min-h-[70vh] text-center p-8 relative leading-tight">
+                <div class="absolute inset-0 z-0"> 
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" 
+                        alt="Escritorio de trabajo tecnológico" 
+                        class="w-full h-full object-cover opacity-20" 
+                        loading="lazy"> 
+                </div>
+                <div class="hero-content max-w-4xl space-y-6">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight text-white leading-tight relative">
+                        Bienvenido a Mi Sitio Web Profesional
+                    </h1>
+                    <h2 class="text-2xl sm:text-3xl font-light text-blue-400 tracking-wide"> Encontrarás todo lo que necesitas</h2>
+                    <p class="text-gray-300 text-lg sm:text-xl max-w-3xl mx-auto">
+                        Explora nuestros servicios y descubre cómo podemos ayudarte a alcanzar tus objetivos.
+                    </p>
+                    <a href="#" class="btn-primary inline-block mt-4 px-8 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl uppercase text-sm tracking-wider">ver más</a>
+                </div>
+            </section>
+            <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center"> 
+                <h2 class="text-4xl font-extrabold mb-12">Nuestros Servicios Destacados</h2> 
+                    <!-- CONTENEDOR GRID --> 
+                    <div class="grid-container grid gap-8 grid-cols-1 md:grid-cols-3"> 
+                    <!-- Ítem 1 --> 
+                    <div class="service-card bg-gray-800 p-6 rounded-xl shadow-xl border border-gray- 700 hover:border-blue-500 transition duration-300"> 
+                        <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition"> 
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg> 
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3 text-blue-400">Diseño UX/UI</h3> 
+                        <p class="text-gray-400">Creamos experiencias intuitivas y visualmente atractivas 
+                    </div> 
+                        <!-- Ítem 2 --> 
+                        <div class="service-card bg-gray-800 p-6 rounded-xl shadow-xl border border-gray- 700 hover:border-blue-500 transition duration-300"> 
+                            <img src="https://www.bbva.com/wp-content/uploads/2017/10/tecnologia-bbva.jpg" alt="Icono de desarrollo frontend" class="w-12 h-12 mb-6 group-hover:scale-110 transition">
+                            <h3 class="text-2xl font-semibold mb-3 text-blue-400">Desarrollo Frontend</h3> 
+                            <p class="text-gray-400">Implementación de código limpio y rápido con las últimas 
+                        </div> 
+                        <!-- Ítem 3 --> 
+                        <div class="service-card bg-gray-800 p-6 rounded-xl shadow-xl border border-gray- 700 hover:border-blue-500 transition duration-300"> 
+                            <div>
+                                <svg width="256px" height="256px" viewBox="-10.24 -10.24 1044.48 1044.48" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#823ad9" stroke="#823ad9" stroke-width="4.096" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M655.1 307.6s21.9-44 25-62.7c0 0 19.6-49.7 0-62.4 0 0-7.5-25.5-20-11.4l-26.9 25.6 21.9 110.9z" fill="#FFFFFF"></path><path d="M653.8 316.8l-24-121.2 28-26.7c3.7-4.2 7.6-5.8 11.6-4.9 7.6 1.7 11.9 12.9 13.1 16.5 19.3 14.3 2.1 60.5 0.4 65.1-3.3 19-24.3 61.4-25.2 63.2l-3.9 8z m-17.4-119.1l19.9 100.5c6.4-13.5 18.6-40.5 20.8-53.8l0.1-0.3 0.1-0.3c5.2-13.2 15.5-49.5 1.2-58.8l-0.9-0.6-0.3-1.1c-1.2-4-4.9-12.5-9-13.4-1.7-0.4-3.7 0.7-5.9 3.2l-0.2 0.2-25.8 24.4z" fill="#843A5F"></path><path d="M377.1 298.8s-70.6-55.3-50.6-78c0 0 11.1-53.3 30.2-56l6.6-13.8 31.1 21.1-17.3 126.7z" fill="#FFFFFF"></path><path d="M379.4 304.4l-4.1-3.2c-2.2-1.7-52.7-41.6-55.2-68.5-0.5-5.1 0.8-9.6 3.7-13.2 1.7-8.1 12.1-52.3 30.9-57.3l7.5-15.6 35.5 24.1-18.3 133.7z m-14.8-148.9l-5.8 12.1-1.6 0.2c-13.9 1.9-24.7 39.4-27.7 53.6l-0.2 0.8-0.5 0.6c-2.2 2.5-3.1 5.5-2.7 9.3 1.9 20.2 36.7 50.9 48.8 61l16.3-119.5-26.6-18.1z" fill="#843A5F"></path><path d="M511.6 651.3m-214 0a214 214 0 1 0 428 0 214 214 0 1 0-428 0Z" fill="#AE9AA4"></path><path d="M511.6 868.3c-58 0-112.5-22.6-153.5-63.6s-63.6-95.5-63.6-153.5 22.6-112.5 63.6-153.5 95.5-63.6 153.5-63.6 112.5 22.6 153.5 63.6 63.6 95.5 63.6 153.5-22.6 112.5-63.6 153.5c-41.1 41-95.6 63.6-153.5 63.6z m0-428.1c-116.4 0-211 94.7-211 211 0 116.4 94.7 211 211 211s211-94.7 211-211-94.7-211-211-211z" fill="#843A5F"></path><path d="M511.6 572.5l-70.5-122H582z" fill="#FFFFFF"></path><path d="M511.6 578.5l-75.6-131h151.3l-75.7 131z m-65.3-125l65.2 113 65.2-113H446.3z" fill="#843A5F"></path><path d="M513 452.4l-43.4 75.2h86.8z" fill="#843A5F"></path><path d="M370 177.7v193.7c0 43.5 35.6 79.1 79.1 79.1h127.8c43.5 0 79.1-35.6 79.1-79.1V177.7" fill="#E6D8DF"></path><path d="M576.8 453.5H449.1c-45.3 0-82.1-36.8-82.1-82.1V177.7h6v193.7c0 42 34.1 76.1 76.1 76.1h127.8c42 0 76.1-34.1 76.1-76.1V177.7h6v193.7c0 45.3-36.9 82.1-82.2 82.1z" fill="#843A5F"></path><path d="M432.3 259.8m-67.9 0a67.9 67.9 0 1 0 135.8 0 67.9 67.9 0 1 0-135.8 0Z" fill="#FFFFFF"></path><path d="M432.3 330.8c-39.1 0-70.9-31.8-70.9-70.9s31.8-70.9 70.9-70.9c39.1 0 70.9 31.8 70.9 70.9s-31.7 70.9-70.9 70.9z m0-135.9c-35.8 0-64.9 29.1-64.9 64.9s29.1 64.9 64.9 64.9 64.9-29.1 64.9-64.9-29.1-64.9-64.9-64.9z" fill="#843A5F"></path><path d="M593 259.8m-67.9 0a67.9 67.9 0 1 0 135.8 0 67.9 67.9 0 1 0-135.8 0Z" fill="#FFFFFF"></path><path d="M593 330.8c-39.1 0-70.9-31.8-70.9-70.9S553.9 189 593 189c39.1 0 70.9 31.8 70.9 70.9s-31.8 70.9-70.9 70.9z m0-135.9c-35.8 0-64.9 29.1-64.9 64.9s29.1 64.9 64.9 64.9 64.9-29.1 64.9-64.9-29.1-64.9-64.9-64.9z" fill="#843A5F"></path><path d="M532.4 274.6h-6c0-7.4-6-13.4-13.4-13.4s-13.4 6-13.4 13.4h-6c0-10.7 8.7-19.4 19.4-19.4 10.7-0.1 19.4 8.7 19.4 19.4zM512.7 439.3c-8.4 0-18.3-2-18.3-7.7h6c0-0.4-0.2-0.7-0.2-0.8 0.7 0.8 5.3 2.4 12.5 2.4s11.8-1.6 12.5-2.4c-0.1 0.1-0.2 0.3-0.2 0.8h6c0 5.7-9.8 7.7-18.3 7.7z" fill="#843A5F"></path><path d="M380.4 87.7s-58.1 26.6-10.4 84.9c0 0-18.8 19.4 94 10.4 0 0 39.6 8.7 76.3 4.5 0 0 64.6 5.6 115.7-9 0 0 14.2-29.2 5-32.9-9.2-3.7-3.1-30.8-71-23.3 0 0-41.1-40-83.2-27.4 0 0-43.2-6-68.8 15.8-0.2-0.2-54.3 19.9-57.6-23z" fill="#FFFFFF"></path><path d="M518.5 191.6c-27.2 0-51-4.8-54.7-5.6-33.7 2.7-59 3.1-75.3 1.2-12.9-1.5-19.9-4.3-22-8.9-1-2-0.7-4-0.1-5.5-15.1-19-20.8-36.8-17.1-53 5.4-23.5 28.9-34.5 29.9-34.9l3.9-1.8 0.3 4.3c0.7 9.6 4.3 16.5 10.5 20.4 14.3 9.1 38.7 1.2 42.4 0 24.9-20.7 64.4-16.9 70.1-16.2 39.8-11.4 77.7 21.1 84.5 27.4 52.6-5.5 61.8 9.9 67.4 19.1 1.4 2.3 2.5 4.1 3.7 4.6 1.9 0.8 3.4 2.3 4.2 4.4 3.5 9.2-6.4 30.2-7.6 32.6l-0.6 1.2-1.3 0.4c-49.2 14.1-111.5 9.5-116.5 9.1-7.2 0.9-14.6 1.2-21.7 1.2z m-54.3-11.7l0.4 0.1c0.4 0.1 39.5 8.6 75.3 4.4h0.6c0.6 0.1 63.6 5.3 113.3-8.5 3.8-8.2 8.7-21.7 6.8-26.6-0.3-0.7-0.6-0.9-0.8-1-3.1-1.3-4.8-4.1-6.6-7-4.9-8.1-13-21.6-63-16.1l-1.4 0.2-1-1c-0.4-0.4-40.4-38.6-80.3-26.7l-0.6 0.2-0.6-0.1c-0.4-0.1-42.2-5.5-66.5 15.1l-0.4 0.3-0.5 0.2c-1.2 0.5-30.2 11.1-48.2-0.4-6.8-4.4-11.1-11.2-12.7-20.5-6.4 3.9-19.3 13.5-22.8 28.8-3.4 14.7 2.4 31.3 17.2 49.4l1.7 2.1-1.9 1.9c-0.1 0.1-0.5 0.6-0.2 1.1 0.9 1.8 9.7 10.7 91.8 4.2l0.4-0.1z" fill="#843A5F"></path><path d="M749.2 917.6H274.7c-6.6 0-12-5.4-12-12V530c0-6.6 5.4-12 12-12h474.5c6.6 0 12 5.4 12 12v375.6c0 6.6-5.4 12-12 12z" fill="#FFFFFF"></path><path d="M749.2 920.6H274.7c-8.3 0-15-6.7-15-15V530c0-8.3 6.7-15 15-15h474.5c8.3 0 15 6.7 15 15v375.6c0 8.3-6.7 15-15 15zM274.7 521c-5 0-9 4-9 9v375.6c0 5 4 9 9 9h474.5c5 0 9-4 9-9V530c0-5-4-9-9-9H274.7z" fill="#843A5F"></path><path d="M286.9 744.4c-12.9 18-33.9 18-46.8 0s-12.9-47.1 0-65c12.9-18 33.9-18 46.8 0 12.9 17.9 12.9 47 0 65z" fill="#E6D8DF"></path><path d="M263.5 760.8c-9.8 0-19-5.2-25.8-14.7-13.6-18.9-13.6-49.7 0-68.6 6.8-9.5 16-14.7 25.8-14.7s19 5.2 25.8 14.7c13.6 18.9 13.6 49.7 0 68.6-6.8 9.5-16 14.7-25.8 14.7z m0-92c-7.8 0-15.3 4.3-21 12.2-12.2 17-12.2 44.6 0 61.5 5.7 7.9 13.1 12.2 21 12.2 7.8 0 15.3-4.3 21-12.2 12.2-17 12.2-44.6 0-61.5-5.8-7.8-13.2-12.2-21-12.2z" fill="#843A5F"></path><path d="M785 744.4c-12.9 18-33.9 18-46.8 0s-12.9-47.1 0-65c12.9-18 33.9-18 46.8 0 12.9 17.9 12.9 47 0 65z" fill="#E6D8DF"></path><path d="M761.6 760.8c-9.8 0-19-5.2-25.8-14.7-13.6-18.9-13.6-49.7 0-68.6 6.8-9.5 16-14.7 25.8-14.7s19 5.2 25.8 14.7c13.6 18.9 13.6 49.7 0 68.6-6.8 9.5-16 14.7-25.8 14.7z m0-92c-7.8 0-15.3 4.3-21 12.2-12.2 17-12.2 44.6 0 61.5 5.7 7.9 13.1 12.2 21 12.2 7.8 0 15.3-4.3 21-12.2 12.2-17 12.2-44.6 0-61.5-5.7-7.8-13.1-12.2-21-12.2z" fill="#843A5F"></path><path d="M508.5 366.4s-44.6-7.4-58.4 6.8c0 0-17.5 15.7-7.8 35.5l3.8 12.3 19-7.5 7 13.9 5.1-16.5c0.6-2 3.6-1.9 4 0.2l2.2 11.6 12.4-15.3 22.1 18.8 2.7-17.3 12.8 11.3 11.5-12.8 4.3 16 14.5-16 12.5 16.5 8.3-14.3s12.8-19 2.3-29.5c0 0-1.8-18-15.8-17l-62.5 3.3z" fill="#FFFFFF"></path><path d="M472.8 435.3l-9.1-18.1-19.5 7.7-4.6-15.1c-10-20.6 7-37.3 8.4-38.7 14.2-14.6 56.2-8.4 60.7-7.7l62-3.2c12.7-0.9 17.7 11.3 18.8 18.7 10.5 11.9-1.5 30.8-2.6 32.4l-10.5 18.1-13-17.2-15.8 17.4-4.2-16-9.8 10.8-10.9-9.6-2.7 17.1-23.8-20.2-14.6 17.9-2.7-14.2-6.1 19.9z m22.6-32.2l20.3 17.3 2.7-17.4 14.7 12.9 13.2-14.7 4.3 16 13.2-14.6 12 15.8 6.1-10.5c0.1-0.2 11.2-17.1 2.6-25.7l-0.8-0.8-0.1-1.1c-0.1-0.6-1.7-15.1-12.5-14.3l-62.7 3.3-0.3-0.1c-12-2-45.4-4.8-55.7 5.9l-0.2 0.1c-0.6 0.6-15.7 14.5-7.1 31.9l0.2 0.5 2.8 9.1 18.5-7.3 4.9 9.7 2.9-9.3c0.7-2.3 2.7-3.7 5.1-3.6 2.4 0.1 4.2 1.8 4.7 4.1l1 5.3 10.2-12.5z" fill="#843A5F"></path><path d="M649.6 867.8H375.9c-6.6 0-12-5.4-12-12V582.1c0-6.6 5.4-12 12-12h273.6c6.6 0 12 5.4 12 12v273.6c0.1 6.7-5.3 12.1-11.9 12.1z" fill="#FFFFFF"></path><path d="M649.6 870.8H375.9c-8.3 0-15-6.7-15-15V582.1c0-8.3 6.7-15 15-15h273.6c8.3 0 15 6.7 15 15v273.6c0.1 8.3-6.7 15.1-14.9 15.1zM375.9 573.1c-5 0-9 4-9 9v273.6c0 5 4 9 9 9h273.6c5 0 9-4 9-9V582.1c0-5-4-9-9-9H375.9z" fill="#843A5F"></path><path d="M387.6 805.8l-4.8-3.6 66.2-88.3 31.8 42.6 63.8-85.1 31.9 42.5 61.4-81.8 4.8 3.6-66.2 88.2-31.9-42.5-63.8 85.1-31.8-42.6z" fill="#843A5F"></path></g></svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold mb-3 text-blue-400">Optimización SEO</h3> 
+                            <p class="text-gray-400">Mejoramos su posicionamiento en motores de búsqueda para 
+                        </div> 
+                    </div> 
+            </section>
+            <!-- Nuevo formulario de contacto --> 
+            <section id="contacto" class="py-20 px-6 bg-slate-900/50"> 
+            <div class="max-w-xl mx-auto"> 
+                <form id="contactForm" class="glass-card p-10 rounded-3xl shadow-2xl"> 
+                    <h2 class="text-3xl font-bold mb-8 text-center">Contáctanos</h2> 
+                    <div class="space-y-6"> 
+                        <div> 
+                            <label class="block text-sm font-medium text-slate-400 mb-2">Nombre Completo</label> 
+                            <input type="text" id="name" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 transition"> 
+                        </div> 
+                    <div> 
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Correo Electrónico</label> 
+                        <input type="email" id="email" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 transition"> 
+                    </div> 
+                    <div> 
+                        <label class="block text-sm font-medium text-slate-400 mb-2">Mensaje</label> 
+                        <textarea id="message" rows="4" required class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-blue-500 transition"></textarea> 
+                    </div> 
+ 
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-blue-500/20 transition-all"> 
+                        Enviar mensaje 
+                    </button> 
+                </div> 
+            </form> 
+        </div> 
+    </section> 
+        </main>
+        <footer id="contact"  class="bg-gray-900 py-10 text-center text-gray-400 text-sm border-t border-gray- 700 mt-12">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
+                <!-- Contenedor Flex para la distribución de elementos del footer --> 
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"> 
+                    <!-- Columna de Derechos de Autor --> 
+                    <p>&copy; 2025 <span class="text-blue-400">Natalia Santos</span> WEB. Todos los derechos 
+ 
+                    <!-- Columna de Enlaces Rápidos (Flexbox para la fila) --> 
+                    <nav class="footer-nav"> 
+                        <ul  class="flex  space-x-4  text-sm  font-medium"> 
+                            <li><a href="#privacy" class="hover:text-white transition duration-150">Política de Privacidad</a></li> 
+                            <li><a href="#terms" class="hover:text-white transition duration- 150">Términos de Uso</a></li> 
+                            <li><a href="#sitemap" class="hover:text-white transition duration- 150">Mapa del Sitio</a></li> 
+                        </ul> 
+                    </nav> 
+                </div> 
+            </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
+</html>

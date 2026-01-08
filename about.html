@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi sitio web profesional - About</title>
+    <script src="https://cdn.tailwindcss.com"></script> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; } 
+
+        :root { 
+            --color-fondo-principal: #1a202c;
+            --color-texto-claro: #edf2f7;
+            --color-primario-azul: #3182ce; 
+            --color-secundario-hover: #58a6ff;
+            --font-body: "Inter", sans-serif;
+            --font-heading: 'Playfair Display', serif;
+        } 
+
+        body { 
+            font-family: var(--font-body);
+            background-color: var(--color-fondo-principal); 
+            color: var(--color-texto-claro); 
+        }
+
+        h1, h2, h3 { font-family: var(--font-heading); } 
+
+        .btn-primary { 
+            background-color: var(--color-primario-azul);
+            transition: background-color 0.3s ease; 
+        } 
+        .btn-primary:hover { background-color: var(--color-secundario-hover); } 
+        .dropdown:hover .dropdown-menu { 
+            display: block; 
+            opacity: 1; 
+            transform: translateY(0); 
+        } 
+        .dropdown-menu {  
+            display: none;  
+            opacity: 0;  
+            transform: translateY(10px);  
+            transition: all 0.3s ease;  
+        } 
+
+        .glass-card { 
+            background: rgba(30, 41, 59, 0.7); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+        } 
+
+        #menu-btn-img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+            border: 2px solid rgba(49, 130, 206, 0.5);
+        }
+
+        /* Estilo para cuando el menú móvil está activo */
+        #mobile-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease forwards;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <header class="bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16"> 
+            
+            <!-- Logo -->
+            <div class="logo text-xl font-bold text-white tracking-wider">
+                <span class="text-blue-500">PROYECTO</span> WEB 
+            </div>
+
+            <!-- Navegación Desktop -->
+            <nav class="hidden md:flex items-center gap-8"> 
+                <div class="relative dropdown group py-4"> 
+                    <a href="index.html" class="text-slate-300 hover:text-blue-400 transition flex items-center gap-1"> 
+                        Home 
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg> 
+                    </a> 
+                    <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2"> 
+                        <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 transition text-sm">Misión - Visión</a></li> 
+                        <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 transition text-sm">Nuestro Equipo</a></li> 
+                    </ul> 
+                </div> 
+
+                <div class="relative dropdown group py-4"> 
+                    <a href="about.html" class="text-blue-400 font-bold transition flex items-center gap-1"> 
+                        About 
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg> 
+                    </a> 
+                    <ul class="dropdown-menu absolute left-0 mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl border border-slate-700 py-2"> 
+                        <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 transition text-sm">Recursos</a></li> 
+                        <li><a href="#" class="block px-4 py-2 hover:bg-slate-700 transition text-sm">Blog</a></li> 
+                    </ul> 
+                </div> 
+
+                <a href="index.html#services" class="text-gray-300 hover:text-blue-400 transition text-sm">Services</a> 
+                <a href="index.html#contact" class="text-gray-300 hover:text-blue-400 transition text-sm">Contact</a> 
+            </nav>
+
+            
+             <!-- Buscador y Botón Móvil --> 
+            <div class="flex items-center gap-4"> 
+                <div class="hidden sm:flex items-center bg-slate-800/50 border border-slate-700 rounded-full px-3 py-1">  
+                    <input type="text" placeholder="Buscar..." class="bg-transparent border-none outline-none text-xs w-24 text-white">  
+                    <button class="text-slate-400 hover:text-blue-400">  
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>  
+                    </button>  
+                </div>  
+ 
+                <!-- Botón Menú Hamburguesa (Imagen) --> 
+                <button id="menu-toggle" class="md:hidden focus:outline-none"> 
+                    <img id="menu-btn-img" src="https://images.unsplash.com/photo-1593062096033-9a26b09da705?q=80&w=100&auto=format&fit=crop" alt="Menú"> 
+                </button> 
+            </div> 
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800">
+            <div class="px-6 py-6 space-y-4">
+                <a href="index.html" class="block text-xl font-bold text-white border-b border-slate-800 pb-2">Home</a>
+                <a href="about.html" class="block text-xl font-bold text-blue-400 border-b border-slate-800 pb-2">About</a>
+                <div class="pl-4 space-y-2 border-l-2 border-blue-500">
+                    <a href="#" class="block text-slate-400 hover:text-white">Misión - Visión</a>
+                    <a href="#" class="block text-slate-400 hover:text-white">Nuestro Equipo</a>
+                </div>
+                <a href="index.html#services" class="block text-xl font-bold text-white border-b border-slate-800 pb-2">Servicios</a>
+                <a href="index.html#contact" class="block text-xl font-bold text-white border-b border-slate-800 pb-2">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección Historia --> 
+        <section id="historia" class="py-20 px-6 max-w-7xl mx-auto"> 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"> 
+                <div class="relative"> 
+                    <div class="aspect-video rounded-3xl overflow-hidden shadow-2xl border border-slate-700"> 
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1471&auto=format&fit=crop" alt="Equipo" class="w-full h-full object-cover"> 
+                    </div> 
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div> 
+                </div> 
+                <div> 
+                    <h2 class="text-3xl font-bold mb-6">Nuestra Historia</h2> 
+                    <p class="text-slate-400 mb-6 leading-relaxed"> 
+                        Fundada en 2018, lo que comenzó como un pequeño estudio de dos personas...
+                    </p> 
+                    <div class="grid grid-cols-2 gap-6"> 
+                        <div class="glass-card p-4 rounded-2xl"> 
+                            <p class="text-3xl font-extrabold text-blue-400">200+</p> 
+                            <p class="text-xs text-slate-500 uppercase font-bold">Proyectos Éxito</p> 
+                        </div> 
+                        <div class="glass-card p-4 rounded-2xl"> 
+                            <p class="text-3xl font-extrabold text-emerald-400">15+</p> 
+                            <p class="text-xs text-slate-500 uppercase font-bold">Países</p> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+
+
+            <!-- Sección Equipo --> 
+        <section id="equipo" class="py-24 bg-slate-900/40 px-6"> 
+            <div class="max-w-7xl mx-auto text-center"> 
+                <h2 class="text-4xl font-bold mb-16">Las Mentes Brillantes Detrás</h2> 
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"> 
+                     
+ 
+                    <!-- Miembro 1 --> 
+                    <div class="group"> 
+                        <div class="glass-card p-8 rounded-[2rem] transition-all hover:-translate-y-2 hover:border-blue-500/50"> 
+                            <div class="w-32 h-32 mx-auto mb-6 relative"> 
+                                <img 
+src="https://ui-avatars.com/api/?name=Natalia+Santos&background=0284c7&color=fff&size=200" alt="CEO" 
+class="rounded-2xl shadow-lg"> 
+                                <div class="absolute inset-0 rounded-2xl border-2 border-blue-500/30 group-hover:scale-110 
+transition duration-300"></div> 
+                            </div> 
+                            <h3 class="text-2xl font-bold">Natalia Santos</h3> 
+                            <p class="text-blue-400 font-semibold text-sm mb-4">Founder & Lead Architect</p> 
+                            <p class="text-slate-400 text-sm leading-relaxed">Estratega con más de 10 años de experiencia en 
+sistemas distribuidos y diseño de productos.</p> 
+                        </div> 
+                    </div> 
+ 
+                    <!-- Miembro 2 --> 
+                    <div class="group"> 
+                        <div class="glass-card p-8 rounded-[2rem] transition-all hover:-translate-y-2 
+hover:border-emerald-500/50"> 
+                            <div class="w-32 h-32 mx-auto mb-6 relative"> 
+                                <img 
+src="https://ui-avatars.com/api/?name=Carlos+Vargas&background=059669&color=fff&size=200" alt="CTO" 
+class="rounded-2xl shadow-lg"> 
+                                <div class="absolute inset-0 rounded-2xl border-2 border-emerald-500/30 group-hover:scale-110 
+transition duration-300"></div> 
+                            </div> 
+                            <h3 class="text-2xl font-bold">Carlos Vargas</h3> 
+                            <p class="text-emerald-400 font-semibold text-sm mb-4">Senior Developer</p> 
+                            <p class="text-slate-400 text-sm leading-relaxed">Especialista en Backend y seguridad. Obsesionado con 
+el rendimiento y la optimización de datos.</p> 
+                        </div> 
+                    </div> 
+ 
+                    <!-- Miembro 3 --> 
+                    <div class="group"> 
+                        <div class="glass-card p-8 rounded-[2rem] transition-all hover:-translate-y-2 
+hover:border-purple-500/50"> 
+                            <div class="w-32 h-32 mx-auto mb-6 relative"> 
+                                <img src="https://ui-avatars.com/api/?name=Sofia+Perez&background=7c3aed&color=fff&size=200" 
+alt="Designer" class="rounded-2xl shadow-lg"> 
+                                <div class="absolute inset-0 rounded-2xl border-2 border-purple-500/30 group-hover:scale-110 
+transition duration-300"></div> 
+                            </div> 
+                            <h3 class="text-2xl font-bold">Sofía Pérez</h3> 
+                            <p class="text-purple-400 font-semibold text-sm mb-4">Creative Director</p> 
+                            <p class="text-slate-400 text-sm leading-relaxed">Diseñadora UX/UI premiada. Su misión es hacer que la 
+tecnología sea hermosa y fácil de usar.</p> 
+                        </div> 
+                    </div> 
+ 
+                </div> 
+            </div> 
+        </section> 
+ 
+
+
+            <!-- CTA Final --> 
+        <section class="py-20 px-6"> 
+ 
+            <div class="max-w-4xl mx-auto glass-card p-12 rounded-[3rem] text-center border-blue-500/20"> 
+                <h2 class="text-3xl font-bold mb-6">¿Listo para empezar tu proyecto?</h2> 
+                <p class="text-slate-400 mb-8">Nuestro equipo está listo para convertir tu visión en una ventaja competitiva 
+real.</p> 
+                <a href="index.html#contacto" class="inline-block px-10 py-4 bg-white text-slate-900 font-extrabold 
+rounded-2xl hover:bg-blue-400 hover:text-white transition-all shadow-xl shadow-white/5"> 
+                    Hablemos hoy 
+                </a> 
+            </div> 
+        </section> 
+    </main>
+
+    <footer id="contact"  class="bg-gray-900 py-10 text-center text-gray-400 text-sm border-t border-gray- 700 mt-12">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"> 
+                <!-- Contenedor Flex para la distribución de elementos del footer --> 
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"> 
+                    <!-- Columna de Derechos de Autor --> 
+                    <p>&copy; 2025 <span class="text-blue-400">Natalia Santos</span> WEB. Todos los derechos 
+ 
+                    <!-- Columna de Enlaces Rápidos (Flexbox para la fila) --> 
+                    <nav class="footer-nav"> 
+                        <ul  class="flex  space-x-4  text-sm  font-medium"> 
+                            <li><a href="#privacy" class="hover:text-white transition duration-150">Política de Privacidad</a></li> 
+                            <li><a href="#terms" class="hover:text-white transition duration- 150">Términos de Uso</a></li> 
+                            <li><a href="#sitemap" class="hover:text-white transition duration- 150">Mapa del Sitio</a></li> 
+                        </ul> 
+                    </nav> 
+                </div> 
+            </div>
+        </footer>
+
+    <script>
+        // Lógica para el menú hamburguesa 
+        document.addEventListener('DOMContentLoaded', () => { 
+            const menuToggle = document.getElementById('menu-toggle'); 
+            const mobileMenu = document.getElementById('mobile-menu'); 
+ 
+            menuToggle.addEventListener('click', () => { 
+                // Alternar la clase 'hidden' de Tailwind 
+                mobileMenu.classList.toggle('hidden'); 
+                // Alternar nuestra clase de animación personalizada 
+                mobileMenu.classList.toggle('active'); 
+            }); 
+ 
+            // Cerrar menú al hacer clic en un enlace 
+            const mobileLinks = mobileMenu.querySelectorAll('a'); 
+            mobileLinks.forEach(link => { 
+                link.addEventListener('click', () => { 
+                    mobileMenu.classList.add('hidden'); 
+                    mobileMenu.classList.remove('active'); 
+                }); 
+            }); 
+        });
+    </script>
+</body>
+</html>
